@@ -1,4 +1,4 @@
-# MAPPO
+# MAPPO-football
 
 Chao Yu*, Akash Velu*, Eugene Vinitsky, Yu Wang, Alexandre Bayen, and Yi Wu. 
 
@@ -9,6 +9,7 @@ This repository is heavily based on https://github.com/ikostrikov/pytorch-a2c-pp
 
 ## Environments supported:
 
+- [Google Research Football](https://github.com/google-research/football)
 - [StarCraftII (SMAC)](https://github.com/oxwhirl/smac)
 - [Hanabi](https://github.com/deepmind/hanabi-learning-environment)
 - [Multiagent Particle-World Environments (MPEs)](https://github.com/openai/multiagent-particle-envs)
@@ -19,7 +20,7 @@ This repository is heavily based on https://github.com/ikostrikov/pytorch-a2c-pp
 All core code is located within the onpolicy folder. The algorithms/ subfolder contains algorithm-specific code
 for MAPPO. 
 
-* The envs/ subfolder contains environment wrapper implementations for the MPEs, SMAC, and Hanabi. 
+* The envs/ subfolder contains environment wrapper implementations for the Google Football, MPEs, SMAC, and Hanabi. 
 
 * Code to perform training rollouts and policy updates are contained within the runner/ folder - there is a runner for 
 each environment. 
@@ -49,7 +50,10 @@ cd on-policy
 pip install -e .
 ```
 
-Even though we provide requirement.txt, it may have redundancy. We recommend that the user try to install other required packages by running the code and finding which required package hasn't installed yet.
+The minimal requirements.txt for Google Football:
+```
+pip install -r requiremens.txt
+```
 
 ### 2.1 Install StarCraftII [4.10](http://blzdistsc2-a.akamaihd.net/Linux/SC2.4.10.zip)
 
@@ -95,8 +99,8 @@ There are 3 Cooperative scenarios in MPE:
 Here we use train_mpe.sh as an example:
 ```
 cd onpolicy/scripts
-chmod +x ./train_mpe.sh
-./train_mpe.sh
+chmod +x ./train_football.sh
+./train_football.sh
 ```
 Local results are stored in subfold scripts/results. Note that we use Weights & Bias as the default visualization platform; to use Weights & Bias, please register and login to the platform first. More instructions for using Weights&Bias can be found in the official [documentation](https://docs.wandb.ai/). Adding the `--use_wandb` in command line or in the .sh file will use Tensorboard instead of Weights & Biases. 
 
